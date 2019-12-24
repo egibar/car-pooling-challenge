@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cabify.carpooling.CarControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-24T11:15:16" hostname="yair-MSI" time="0.596">
+  <properties/>
+  <testcase name="car controller findById()" classname="com.cabify.carpooling.CarControllerTest" time="0.596"/>
+  <system-out><![CDATA[12:15:13.424 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+12:15:13.439 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+12:15:13.469 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.cabify.carpooling.CarControllerTest] from class [org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper]
+12:15:13.484 [Test worker] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.cabify.carpooling.CarControllerTest], using SpringBootContextLoader
+12:15:13.487 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.cabify.carpooling.CarControllerTest]: class path resource [com/cabify/carpooling/CarControllerTest-context.xml] does not exist
+12:15:13.488 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.cabify.carpooling.CarControllerTest]: class path resource [com/cabify/carpooling/CarControllerTestContext.groovy] does not exist
+12:15:13.488 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.cabify.carpooling.CarControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+12:15:13.489 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.cabify.carpooling.CarControllerTest]: CarControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:15:13.600 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/superyair/dev/git/car-pooling-challenge-yair.kukielka/build/classes/kotlin/main/com/cabify/carpooling/CarpoolingApplication.class]
+12:15:13.601 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.cabify.carpooling.CarpoolingApplication for test class com.cabify.carpooling.CarControllerTest
+12:15:13.602 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - @TestExecutionListeners is not present for class [com.cabify.carpooling.CarControllerTest]: using defaults.
+12:15:13.603 [Test worker] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [com.ninjasquad.springmockk.MockkTestExecutionListener, com.ninjasquad.springmockk.ClearMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+12:15:13.734 [Test worker] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@40195b6b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@47993844, com.ninjasquad.springmockk.MockkTestExecutionListener@2438575e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@486ad565, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@42a20d00, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4c775608, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2a937a7f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@34cc43b5, org.springframework.test.context.event.EventPublishingTestExecutionListener@66d49221, com.ninjasquad.springmockk.ClearMocksTestExecutionListener@10e54fe5, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@21149f04, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7713a178, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@35946021, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@fb49b11, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@addd95c]
+12:15:13.736 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4f0bb759 testClass = CarControllerTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@4f105a0d testClass = CarControllerTest, locations = '{}', classes = '{class com.cabify.carpooling.CarpoolingApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true}', contextCustomizers = set[MockkContextCustomizer(definitions=[[MockkDefinition@63839f8d name = [null], typeToMock = com.cabify.carpooling.data.repository.CarRepository, extraInterfaces = set[[empty]], clear = AFTER]]), org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@19fc1126, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@3ffd2c7c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@f18b0297, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@570f1058, [ImportsContextCustomizer@251f0aea key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration, org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration, org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration, org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration, org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration, org.springframework.boot.autoconfigure.hateoas.HypermediaAutoConfiguration, org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration, org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration, org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration, org.springframework.boot.autoconfigure.mustache.MustacheAutoConfiguration, org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration, org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration, org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration, org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration, org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5a52fa6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2081f56, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+12:15:13.801 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.2.RELEASE)
+
+2019-12-24 12:15:13.999  INFO 19007 --- [    Test worker] com.cabify.carpooling.CarControllerTest  : Starting CarControllerTest on yair-MSI with PID 19007 (started by superyair in /home/superyair/dev/git/car-pooling-challenge-yair.kukielka)
+2019-12-24 12:15:14.001  INFO 19007 --- [    Test worker] com.cabify.carpooling.CarControllerTest  : The following profiles are active: test
+2019-12-24 12:15:16.156  INFO 19007 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-24 12:15:16.376  INFO 19007 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2019-12-24 12:15:16.376  INFO 19007 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2019-12-24 12:15:16.387  INFO 19007 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 11 ms
+2019-12-24 12:15:16.414  INFO 19007 --- [    Test worker] com.cabify.carpooling.CarControllerTest  : Started CarControllerTest in 2.606 seconds (JVM running for 3.531)
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /car/1
+       Parameters = {}
+          Headers = [Accept:"application/json"]
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.cabify.carpooling.web.controller.CarController
+           Method = com.cabify.carpooling.web.controller.CarController#getCarById(long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"id":1,"seats":6}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

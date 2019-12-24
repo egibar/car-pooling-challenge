@@ -1,0 +1,12 @@
+--drop table if exists journey;
+--drop table if exists car;
+--create table car(
+--    id bigint primary key,
+--    seats int not null
+--    );
+--
+--create table journey(
+--    id bigint primary key,
+--    people int not null,
+--    car_id bigint references car(id)
+--);
