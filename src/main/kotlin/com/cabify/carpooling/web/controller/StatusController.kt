@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping(value = ["/"])
 class StatusController(val repo: CarRepository) {
 
+    @GetMapping("")
+    fun getStatusRoot(): ResponseEntity<String> = ResponseEntity.ok().build()
+
     @GetMapping("/status")
     fun getStatus(): ResponseEntity<String> = ResponseEntity.ok().build()
 
