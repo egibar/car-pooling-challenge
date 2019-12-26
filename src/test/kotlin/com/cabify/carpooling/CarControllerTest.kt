@@ -1,7 +1,7 @@
 package com.cabify.carpooling
 
-import com.cabify.carpooling.data.entities.CarEntity
-import com.cabify.carpooling.data.repository.CarRepository
+import com.cabify.carpooling.domain.Car
+import com.cabify.carpooling.service.CarService
 import com.cabify.carpooling.web.controller.CarController
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
@@ -25,12 +24,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 class CarControllerTest(@Autowired val mockMvc: MockMvc) {
 
     @MockkBean
-    private lateinit var carRepository: CarRepository
+    private lateinit var carService: CarService
 
     @Test
     fun `car controller findById`() {
-        val carEntity: CarEntity = CarEntity(1, 6)
-        every { carRepository.findByIdOrNull(1) } returns carEntity
+        val car: Car = Car(1, 6)
+        every { carService.findById(1) } returns car
 
         mockMvc.perform(get("/car/{1}", 1)
                 .accept(MediaType.APPLICATION_JSON))

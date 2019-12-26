@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull
 @Entity
 @Table(name = "car")
 data class CarEntity constructor(
-        @NotNull @Id private var id: Long,
+        @Id private var id: Long,
         @NotNull var seats: Int
 ) : Persistable<Long> {
 

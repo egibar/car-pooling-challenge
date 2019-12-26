@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull
 data class JourneyEntity constructor(
         @Id private var id: Long,
         @NotNull var people: Int,
-        @ManyToOne(fetch = FetchType.LAZY, optional = false)
-        @JoinColumn(name = "car_id", nullable = false)
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "car_id")
         @OnDelete(action = OnDeleteAction.CASCADE)
         var car: CarEntity?) : Persistable<Long> {
 
@@ -22,6 +22,12 @@ data class JourneyEntity constructor(
     constructor(id: Long, people: Int, car: CarEntity?, new: Boolean) : this(id, people, car) {
         this.new = new
     }
+
+    constructor(id: Long, people: Int, new: Boolean) : this(id, people) {
+        this.new = new
+    }
+
+    constructor(id: Long, people: Int) : this(id, people, car=null, new=true)
 
     override fun getId(): Long {
         return this.id
