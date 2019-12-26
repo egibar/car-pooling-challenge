@@ -13,8 +13,6 @@
 #ENTRYPOINT ["java","-jar","/opt/app/app.jar"]
 
 FROM adoptopenjdk/openjdk11:alpine-slim
-RUN ls -l build
-RUN ls -l build/libs
 RUN mkdir /opt/app
 COPY build/libs/car-pooling-challenge-yair.kukielka-0.0.1-SNAPSHOT.jar /opt/app/app.jar
 RUN ls /opt/app
