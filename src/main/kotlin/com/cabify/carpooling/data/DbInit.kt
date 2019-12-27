@@ -13,9 +13,10 @@ class DataInitializer(val carRepository: CarRepository, val journeyRepository: J
     private val log = LoggerFactory.getLogger(DataInitializer::class.java);
 
     override fun run(vararg strings: String) {
-        log.info("start data initialization ...")
-        val carList: List<CarEntity> = listOf(CarEntity(1, 6), CarEntity(2, 4), CarEntity(3, 5))
-        carRepository.saveAll(carList)
+        // for testing purposes
+//        log.info("start data initialization ...")
+//        val carList: List<CarEntity> = listOf(CarEntity(1, 4), CarEntity(2, 5), CarEntity(3, 6))
+//        carRepository.saveAll(carList)
 
 //        journeyRepository.save(JourneyEntity(1,2))
     }

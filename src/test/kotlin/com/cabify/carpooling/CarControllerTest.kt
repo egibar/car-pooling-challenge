@@ -31,7 +31,7 @@ class CarControllerTest(@Autowired val mockMvc: MockMvc) {
         val car: Car = Car(1, 6)
         every { carService.findById(1) } returns car
 
-        mockMvc.perform(get("/car/{1}", 1)
+        mockMvc.perform(get("/cars/{1}", 1)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk)

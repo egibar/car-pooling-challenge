@@ -1,1 +1,0 @@
---INSERT INTO car (id,seats) VALUES (1, 6);
