@@ -23,7 +23,7 @@ class JourneyService(val journeyRepository: JourneyRepository) {
         return journeyRepository.findAll().map { it.toJourney() }
     }
 
-    fun saveJourney(journey: Journey) {
+    fun save(journey: Journey) {
         val journeyEntity = journey.toJourneyEntity()
         journeyRepository.save(journeyEntity)
     }

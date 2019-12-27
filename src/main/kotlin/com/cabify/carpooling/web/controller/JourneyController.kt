@@ -28,7 +28,7 @@ class JourneyController(val journeyService: JourneyService) {
 
     @PostMapping("")
     fun save(@Valid @RequestBody journey: Journey): ResponseEntity<Void> {
-        journeyService.saveJourney(journey)
+        journeyService.save(journey)
         return ResponseEntity.ok().build();
     }
 

@@ -41,6 +41,7 @@ dependencies {
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
+	runtimeOnly("mysql:mysql-connector-java")
 	
 //	kapt("org.springframework.boot:spring-boot-configuration-processor")
 }
