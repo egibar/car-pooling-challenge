@@ -46,7 +46,6 @@ dependencies {
 //	kapt("org.springframework.boot:spring-boot-configuration-processor")
 }
 
-
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
