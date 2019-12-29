@@ -11,7 +11,7 @@ build:
    paths:
      - build/libs
   script:
-   - ./gradlew clean bootJar --no-daemon
+   - ./gradlew clean build --no-daemon
 
 build_image:
   stage: docker
