@@ -2,7 +2,6 @@ package com.cabify.carpooling.web.unit
 
 import com.cabify.carpooling.domain.Journey
 import com.cabify.carpooling.service.JourneyService
-import com.cabify.carpooling.service.ResetService
 import com.cabify.carpooling.web.controller.JourneyController
 import com.cabify.carpooling.web.integration.asJsonString
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -54,4 +53,36 @@ class JourneyControllerTest(@Autowired val mockMvc: MockMvc, @Autowired var mapp
                 .andExpect(status().isOk)
     }
 
+    @Test
+    fun `journey controller dropoff returns ok`() {
+        val journeyId = 1L
+//        every { journeyService.findById(journeyId) } returns Journey
+        every { journeyService.deleteById(journeyId) } returns true
+
+        mockMvc.perform(post("/dropoff")
+                .param("ID", "1")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk)
+    }
+
+    @Test
+    fun `journey controller dropoff returns not found`() {
+        val journeyId = 1L
+        every { journeyService.deleteById(journeyId) } returns false
+
+        mockMvc.perform(post("/dropoff")
+                .param("ID", "1")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun `journey controller dropoff returns bad request`() {
+        mockMvc.perform(post("/dropoff")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest)
+    }
 }

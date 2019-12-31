@@ -37,12 +37,18 @@ class CarController(val carService: CarService, val journeyService: JourneyServi
         return ResponseEntity.ok().build()
     }
 
+    /**
+     * Empties the db
+     */
     @GetMapping("/reset")
     fun reset(): ResponseEntity<Void> {
         resetService.resetDb()
         return ResponseEntity.ok().build()
     }
 
+    /**
+     * Initializes the db with some cars and journeys for testing purposes
+     */
     @GetMapping("/init")
     fun initializeDB(): ResponseEntity<Void> {
         val carList: List<Car> = listOf(Car(1, 4), Car(2, 5), Car(3, 6))
