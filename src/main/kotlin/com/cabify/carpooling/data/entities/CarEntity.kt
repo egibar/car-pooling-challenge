@@ -17,10 +17,6 @@ data class CarEntity constructor(
     @Transient
     var new: Boolean = true
 
-    constructor(id: Long, seats: Int, new: Boolean) : this(id, seats) {
-        this.new = new
-    }
-
     override fun getId(): Long {
         return this.id
     }
