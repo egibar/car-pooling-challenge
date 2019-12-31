@@ -7,7 +7,7 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 class CarpoolingApplication
 
-private val log = getLogger(CarpoolingApplication::class.java);
+private val log = getLogger(CarpoolingApplication::class.java)
 
 fun main(args: Array<String>) {
     runApplication<CarpoolingApplication>(*args)

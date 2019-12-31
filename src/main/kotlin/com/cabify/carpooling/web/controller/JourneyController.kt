@@ -9,7 +9,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping(value = ["/journey"])
-class JourneyController(val journeyService: JourneyService) {
+class JourneyController(val journeyService: JourneyService) : BaseController() {
 
 
     @GetMapping("/{id}")
@@ -18,7 +18,7 @@ class JourneyController(val journeyService: JourneyService) {
         journey?.let {
             return ResponseEntity(it, HttpStatus.OK)
         }
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build()
     }
 
     @GetMapping("/findall")
@@ -29,7 +29,7 @@ class JourneyController(val journeyService: JourneyService) {
     @PostMapping("")
     fun save(@Valid @RequestBody journey: Journey): ResponseEntity<Void> {
         journeyService.save(journey)
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().build()
     }
 
 }
