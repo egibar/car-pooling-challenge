@@ -2,10 +2,9 @@ package com.cabify.carpooling.data.entities
 
 import com.cabify.carpooling.domain.Car
 import org.springframework.data.domain.Persistable
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 import javax.validation.constraints.NotNull
+import kotlin.jvm.Transient
 
 @Entity
 @Table(name = "car")
@@ -25,6 +24,11 @@ data class CarEntity constructor(
         return new
     }
 
+    @PrePersist
+    @PostLoad
+    fun markNotNew() {
+        this.new = false
+    }
 }
 
 fun CarEntity.toCar(): Car {

@@ -43,6 +43,11 @@ data class JourneyEntity constructor(
         return new
     }
 
+    @PrePersist
+    @PostLoad
+    fun markNotNew() {
+        this.new = false
+    }
 }
 
 fun JourneyEntity.toJourney(): Journey {

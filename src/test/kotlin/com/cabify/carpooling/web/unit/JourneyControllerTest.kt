@@ -1,5 +1,6 @@
 package com.cabify.carpooling.web.unit
 
+import com.cabify.carpooling.domain.Car
 import com.cabify.carpooling.domain.Journey
 import com.cabify.carpooling.service.JourneyService
 import com.cabify.carpooling.web.controller.JourneyController
@@ -12,7 +13,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -56,7 +59,6 @@ class JourneyControllerTest(@Autowired val mockMvc: MockMvc, @Autowired var mapp
     @Test
     fun `journey controller dropoff returns ok`() {
         val journeyId = 1L
-//        every { journeyService.findById(journeyId) } returns Journey
         every { journeyService.deleteById(journeyId) } returns true
 
         mockMvc.perform(post("/dropoff")
@@ -85,4 +87,55 @@ class JourneyControllerTest(@Autowired val mockMvc: MockMvc, @Autowired var mapp
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest)
     }
+
+    @Test
+    fun `journey controller locate returns ok`() {
+        val journeyId = 1L
+        val journey = Journey(1, 3)
+        val car = Car(23,4)
+        journey.car = car
+        every { journeyService.findById(journeyId) } returns journey
+
+        mockMvc.perform(post("/locate")
+                .param("ID", "1")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk)
+                .andExpect(jsonPath("$.id").value(23))
+                .andExpect(jsonPath("$.seats").value(4))
+    }
+
+    @Test
+    fun `journey controller locate returns no content`() {
+        val journeyId = 1L
+        val journey = Journey(1, 3)
+        every { journeyService.findById(journeyId) } returns journey
+
+        mockMvc.perform(post("/locate")
+                .param("ID", "1")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent)
+    }
+
+    @Test
+    fun `journey controller locate returns not found`() {
+        val journeyId = 1L
+        every { journeyService.findById(journeyId) } returns null
+
+        mockMvc.perform(post("/locate")
+                .param("ID", "1")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun `journey controller locate returns bad request`() {
+        mockMvc.perform(post("/locate")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest)
+    }
+
 }
