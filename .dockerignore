@@ -1,0 +1,7 @@
+.git
+.gradle
+build/classes
+build/kotlin
+build/reports
+build/resources
+build/test-results

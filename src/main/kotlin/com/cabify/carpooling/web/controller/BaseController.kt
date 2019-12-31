@@ -12,6 +12,5 @@ open class BaseController {
     // Convert a predefined exception to an HTTP Status code
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "Data integrity violation") // 409
     @ExceptionHandler(DataIntegrityViolationException::class)
-    fun conflict() { // Nothing to do
-    }
+    fun conflict() {}
 }

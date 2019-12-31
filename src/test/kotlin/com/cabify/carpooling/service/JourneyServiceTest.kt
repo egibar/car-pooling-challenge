@@ -10,6 +10,7 @@ import io.mockk.every
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.test.util.AssertionErrors
 
 @SpringBootTest
@@ -27,7 +28,7 @@ class JourneyServiceTest {
         val carEntity = CarEntity(1, 6)
         val journey = Journey(1, 3)
         val journeyEntity = Journey(1, 3).toJourneyEntity()
-        journeyEntity.car=carEntity
+        journeyEntity.car = carEntity
         every { carRepository.findFirstAvailable(journey.people) } returns carEntity
         every { journeyRepository.save(journeyEntity) } returns journeyEntity
 
@@ -44,5 +45,25 @@ class JourneyServiceTest {
 
         val nothing = journeyService.save(journey)
         AssertionErrors.assertEquals("shouldn't return anything", nothing, Unit)
+    }
+
+    @Test
+    fun `journey service delete journey`() {
+        val journeyId = 1L
+        val journeyEntity = Journey(journeyId, 3).toJourneyEntity()
+        every { journeyRepository.findByIdOrNull(journeyId) } returns journeyEntity
+        every { journeyRepository.deleteById(journeyId) } returns Unit
+
+        val result = journeyService.deleteById(journeyId)
+        AssertionErrors.assertEquals("should return true", result, true)
+    }
+
+    @Test
+    fun `journey service can't delete non existing journey`() {
+        val journeyId = 1L
+        every { journeyRepository.findByIdOrNull(journeyId) } returns null
+
+        val result = journeyService.deleteById(journeyId)
+        AssertionErrors.assertEquals("should return false", result, false)
     }
 }
