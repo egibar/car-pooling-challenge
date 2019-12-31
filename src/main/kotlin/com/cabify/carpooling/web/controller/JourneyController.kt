@@ -1,5 +1,6 @@
 package com.cabify.carpooling.web.controller
 
+import com.cabify.carpooling.domain.Car
 import com.cabify.carpooling.domain.Journey
 import com.cabify.carpooling.service.JourneyService
 import org.springframework.http.HttpStatus
@@ -42,6 +43,18 @@ class JourneyController(val journeyService: JourneyService) : BaseController() {
             } else {
                 ResponseEntity.notFound().build() // no journey with that id found
             }
+        } ?: return ResponseEntity.badRequest().build() // no id sent in the request
+    }
+
+    @PostMapping(value = ["/locate"], consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE])
+    fun locate(@RequestParam("ID") id: Long?): ResponseEntity<Car> {
+        id?.let {
+            val journey = journeyService.findById(id)
+            journey?.let {
+                it.car?.let {car ->
+                    return ResponseEntity(car, HttpStatus.OK) // success
+                } ?: return ResponseEntity.noContent().build() // journey found but no car assigned
+            } ?: return ResponseEntity.notFound().build() // journey not found
         } ?: return ResponseEntity.badRequest().build() // no id sent in the request
     }
 }
