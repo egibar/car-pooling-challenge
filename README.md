@@ -1,5 +1,25 @@
 # Car Pooling Service Challenge
 
+### Developer notes: (Original challenge instructions below)
+
+This web application is a Java Spring Boot 2 app, developed in Kotlin and using a MySQL database.
+ 
+I tried to use a docker container for the mysql database and another one for the web application. 
+This is a better design in my opinion but due to these restrictions it wasn't possible:
+- The challenge instructions asked to not change the acceptance test job
+- This open Gitblab issue (https://gitlab.com/gitlab-org/gitlab-runner/issues/1042) that would make it possible for
+ a service (in this case the webapp container) to depend on another service (the mysql container).
+
+I misread the instructions and didn't use Merge Requests at the begining but I did use them with appropriate comments 
+during most of the development. I have merged my feature branches into the `develop` branch to keep the master branch
+with original instructions available most of the time. And I finally merged `develop` into `master` at the end.
+
+The tests use a h2 memory database.
+
+# ==========
+
+### (Original challenge instructions below)
+
 Design/implement a system to manage car pooling.
 
 At Cabify we provide the service of taking people from point A to point B.
