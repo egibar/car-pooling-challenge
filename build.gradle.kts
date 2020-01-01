@@ -7,7 +7,6 @@ plugins {
 	kotlin("plugin.spring") version "1.3.61"
 	kotlin("plugin.jpa") version "1.3.61"
 	kotlin("plugin.allopen") version "1.3.60"
-//	kotlin("kapt") version "1.3.60"
 }
 
 group = "com.cabify"
@@ -31,6 +30,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+
+	// for open api
+	implementation("org.springdoc:springdoc-openapi-core:1.1.49")
+	implementation("org.springdoc:springdoc-openapi-ui:1.1.49")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 		exclude(module = "mockito-core")
@@ -42,8 +46,6 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
 	runtimeOnly("mysql:mysql-connector-java")
-	
-//	kapt("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 tasks.withType<Test> {

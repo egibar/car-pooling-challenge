@@ -10,15 +10,36 @@ This is a better design in my opinion but due to these restrictions it wasn't po
 - This open Gitblab issue (https://gitlab.com/gitlab-org/gitlab-runner/issues/1042) that would make it possible for
  a service (in this case the webapp container) to depend on another service (the mysql container).
 
-I misread the instructions and didn't use Merge Requests at the begining but I did use them with appropriate comments 
+I misread the instructions and didn't use Merge Requests at the beginning but I did use them with appropriate comments 
 during most of the development. I have merged my feature branches into the `develop` branch to keep the master branch
 with original instructions available most of the time. And I finally merged `develop` into `master` at the end.
 
 The tests use a h2 memory database.
 
+#### To run locally
+
+To run the webapp locally, there's 2 steps:
+
+- Run local mysql container
+```
+docker run --rm -d --name docker-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass mysql:latest
+```
+- Run the web application (you'll need JDK 11)
+```
+./gradlew clean bootRun
+```
+
+You will be able to check the app status under this url `http://localhost:9091/status`
+
+#### Open API 
+
+The app supports the OpenAPI v3 spec and is available when the server is running under these 2 urls:
+ - For human (Swagger): `http://localhost:9091/swagger-ui.html`
+ - For machines (OpenAPI definition): `http://localhost:9091/v3/api-docs`
+ 
 # ==========
 
-### (Original challenge instructions below)
+### Original challenge instructions
 
 Design/implement a system to manage car pooling.
 
