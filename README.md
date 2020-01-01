@@ -11,7 +11,8 @@ This is a better design in my opinion but due to these restrictions it wasn't po
  a service (in this case the webapp container) to depend on another service (the mysql container).
 
 I misread the instructions and didn't use Merge Requests at the begining but I did use them with appropriate comments 
-during most of the development.
+during most of the development. I have merged my feature branches into the `develop` branch to keep the master branch
+with original instructions available most of the time. And I finally merged `develop` into `master` at the end.
 
 The tests use a h2 memory database.
 
