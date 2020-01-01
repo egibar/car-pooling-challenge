@@ -1,8 +1,6 @@
 # Car Pooling Service Challenge
 
-## Original challenge instructions below
-
-###Developer notes:
+### Developer notes: (Original challenge instructions below)
 
 This web application is a Java Spring Boot 2 app, developed in Kotlin and using a MySQL database.
  
@@ -17,8 +15,9 @@ during most of the development.
 
 The tests use a h2 memory database.
 
-#==========
+# ==========
 
+### (Original challenge instructions below)
 
 Design/implement a system to manage car pooling.
 
