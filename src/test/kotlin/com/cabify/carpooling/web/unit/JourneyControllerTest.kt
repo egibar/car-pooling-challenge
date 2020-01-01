@@ -45,7 +45,7 @@ class JourneyControllerTest(@Autowired val mockMvc: MockMvc, @Autowired var mapp
 
     @Test
     fun `journey controller save journey`() {
-        val journey: Journey = Journey(1, 6)
+        val journey = Journey(1, 6)
         val journeyAsJson = asJsonString(mapper, journey)
         every { journeyService.save(journey) } returns Unit
 
@@ -54,6 +54,20 @@ class JourneyControllerTest(@Autowired val mockMvc: MockMvc, @Autowired var mapp
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk)
+    }
+
+
+    @Test
+    fun `journey controller save invalid journey`() {
+        val journey = Journey(1, 7) // invalid number of people
+        val journeyAsJson = asJsonString(mapper, journey)
+        every { journeyService.save(journey) } returns Unit
+
+        mockMvc.perform(post("/journey")
+                .content(journeyAsJson)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest)
     }
 
     @Test

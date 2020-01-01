@@ -7,9 +7,12 @@ import com.cabify.carpooling.service.JourneyService
 import com.cabify.carpooling.service.ResetService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
+import javax.validation.constraints.NotEmpty
 
+@Validated
 @RestController
 @RequestMapping(value = ["/cars"])
 class CarController(val carService: CarService, val journeyService: JourneyService, val resetService: ResetService) : BaseController() {
@@ -29,7 +32,10 @@ class CarController(val carService: CarService, val journeyService: JourneyServi
     }
 
     @PutMapping("")
-    fun save(@Valid @RequestBody cars: List<Car>): ResponseEntity<Void> {
+    fun save(@RequestBody
+             @NotEmpty(message = "Input car list cannot be empty.")
+             @Valid
+             cars: List<Car>): ResponseEntity<Void> {
         // clean db first
         resetService.resetDb()
 

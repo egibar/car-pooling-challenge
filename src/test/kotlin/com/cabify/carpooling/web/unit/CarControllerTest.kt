@@ -50,7 +50,7 @@ class CarControllerTest(@Autowired val mockMvc: MockMvc, @Autowired var mapper: 
     }
 
     @Test
-    fun `car controller reset DB and put cars`() {
+    fun `car controller put cars`() {
         val carList: List<Car> = listOf(Car(1, 4), Car(2, 5), Car(3, 6))
         val carListAsJson = asJsonString(mapper, carList)
         every { carService.saveAll(carList) } returns Unit
@@ -61,6 +61,21 @@ class CarControllerTest(@Autowired val mockMvc: MockMvc, @Autowired var mapper: 
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk)
+    }
+
+
+    @Test
+    fun `car controller put invalid cars`() {
+        val carList: List<Car> = listOf(Car(3, 7)) // invalid number of seats
+        val carListAsJson = asJsonString(mapper, carList)
+        every { carService.saveAll(carList) } returns Unit
+        every { resetService.resetDb() } returns Unit
+
+        mockMvc.perform(put("/cars/")
+                .content(carListAsJson)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest)
     }
 
 }

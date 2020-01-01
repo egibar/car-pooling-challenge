@@ -3,9 +3,13 @@ package com.cabify.carpooling.web.controller
 import com.cabify.carpooling.domain.Car
 import com.cabify.carpooling.domain.Journey
 import com.cabify.carpooling.service.JourneyService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.BindingResult
+import org.springframework.validation.Errors
+import org.springframework.validation.Validator
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
@@ -13,7 +17,6 @@ import javax.validation.Valid
 @RestController
 @RequestMapping(value = [""])
 class JourneyController(val journeyService: JourneyService) : BaseController() {
-
 
     @GetMapping("/journey/{id}")
     fun getJourneyById(@PathVariable id: Long): ResponseEntity<Journey> {
