@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull
 data class JourneyEntity constructor(
         @Id private var id: Long,
         @NotNull var people: Int,
-        @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
+        @ManyToOne
         @JoinColumn(name = "car_id")
         var car: CarEntity? = null,
         @Column(name = "create_date")
